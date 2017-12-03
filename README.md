@@ -16,3 +16,5 @@ It also contains the following tools:
 
 This is a base image that should be consumed from custom images that contain the
 nginx.conf, Procfile, npm packages etc. to build the full app.
+
+See [Dockerfile](Dockerfile) for details.
