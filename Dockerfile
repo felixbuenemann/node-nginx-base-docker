@@ -95,3 +95,8 @@ RUN set -x \
   && chmod +x forego \
   && mv forego /usr/local/bin/ \
   && rm forego.tgz
+
+# alpine's nodejs is compiled with small-icu, download full-icu
+ENV FULL_ICU_VERSION=1.2.0
+RUN su node -c "cd && npm install --silent --no-package-lock --prod full-icu@${FULL_ICU_VERSION}" >/dev/null
+ENV NODE_ICU_DATA /home/node/node_modules/full-icu
