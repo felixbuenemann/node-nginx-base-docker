@@ -14,7 +14,7 @@ RUN set -x \
   && addgroup -S nginx \
   && adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
   && apk update && apk upgrade \
-  && apk add bash openssl pcre ca-certificates libintl geoip nodejs \
+  && apk add bash openssl pcre ca-certificates libintl geoip nodejs yarn \
   && apk add --virtual .build-deps build-base linux-headers gettext gnupg geoip-dev openssl-dev pcre-dev \
   && mkdir -p /tmp/src \
   # get nginx_accept_language_module:
