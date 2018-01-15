@@ -7,7 +7,7 @@ Mainline NGINX 1.13 with the following features:
 * Gzip Compression via [Cloudflare's Zlib fork](https://github.com/cloudflare/zlib)
 * Brotli Compression using an [ngx\_brotli fork](https://github.com/felixbuenemann/ngx_brotli/tree/fix-static-brotli-build) with brotli 1.0
 * Geoip
-* Accept-Language support via [acceept\_language\_module](https://github.com/giom/nginx_accept_language_module)
+* Accept-Language support via [accept\_language\_module](https://github.com/giom/nginx_accept_language_module)
 
 It also contains the following tools:
 
