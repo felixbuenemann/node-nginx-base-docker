@@ -5,7 +5,7 @@ ENV NGINX_VERSION 1.13.7
 ENV NGINX_GPG_KEY B0F4253373F8F6F510D42178520A9993A1C052F8
 ENV CLOUDFLARE_ZLIB_REF f04f4ed63ae039f1d1bc5c0e3a57aa66e1e2cd6f
 ENV ACCEPT_LANGUAGE_MODULE_REF 2f69842f83dac77f7d98b41a2b31b13b87aeaba7
-ENV BROTLI_MODULE_REF 4711e027b56ac22710458ada77eeb8261c946f20
+ENV BROTLI_MODULE_REF 47550a25d07363f8eb87ef901b2de5883c46352b
 ENV BROTLI_LIBRARY_REF 0ad94eed00420bf1154cb16a289aa27efbb30c01
 
 RUN set -x \
@@ -23,7 +23,7 @@ RUN set -x \
   && tar xzf nginx_accept_language_module.tgz \
   # get ngx_brotli:
   && cd /tmp/src \
-  && wget -O ngx_brotli.tgz https://github.com/felixbuenemann/ngx_brotli/archive/${BROTLI_MODULE_REF}.tar.gz \
+  && wget -O ngx_brotli.tgz https://github.com/eustas/ngx_brotli/archive/${BROTLI_MODULE_REF}.tar.gz \
   && tar xzf ngx_brotli.tgz \
   # get brotli lib for ngx_brotli:
   && cd /tmp/src \
