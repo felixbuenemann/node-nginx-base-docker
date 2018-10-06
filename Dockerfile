@@ -8,14 +8,19 @@ ENV ACCEPT_LANGUAGE_MODULE_REF 2f69842f83dac77f7d98b41a2b31b13b87aeaba7
 ENV BROTLI_MODULE_REF 6a1174446f5a866d3d13615dd2824177570f0a69
 ENV BROTLI_LIBRARY_REF 63e15bb3a6b972141bbff3440b90722ce23935c2
 
+ADD stack-fix.c /tmp/
+
 RUN set -x \
   && addgroup -g 1000 node \
   && adduser -u 1000 -G node -s /bin/sh -D node \
   && addgroup -S nginx \
   && adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
   && apk update && apk upgrade \
-  && apk add bash openssl pcre ca-certificates libintl geoip nodejs yarn \
+  && apk add bash openssl pcre ca-certificates libintl geoip nodejs npm yarn \
   && apk add --virtual .build-deps build-base linux-headers gettext gnupg geoip-dev openssl-dev pcre-dev \
+  && gcc  -shared -fPIC /tmp/stack-fix.c -o /usr/local/lib/stack-fix.so \
+  && strip /usr/local/lib/stack-fix.so \
+  && rm /tmp/stack-fix.c \
   && mkdir -p /tmp/src \
   # get nginx_accept_language_module:
   && cd /tmp/src \
@@ -84,6 +89,8 @@ RUN set -x \
   && rm -rf /tmp/src \
   && apk del --purge .build-deps \
   && rm -rf /var/cache/apk/*
+
+ENV LD_PRELOAD=/usr/local/lib/stack-fix.so
 
 ARG FOREGO_URL=https://bin.equinox.io/a/c6JW1BqJwSa/forego-20170327195458-linux-amd64.tar.gz
 ARG FOREGO_SHA256=ebea36e8326cdbc9cca15f946c13eb7b91c73bce61bcc2fd6ae7984e825b81d0
