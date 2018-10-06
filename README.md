@@ -1,6 +1,6 @@
 This Docker image contains the following components:
 
-Mainline NGINX 1.13 with the following features:
+Stable NGINX 1.14 with the following features:
 
 * HTTP/2
 * SSL with ALPN support (using OpenSSL)
@@ -8,6 +8,8 @@ Mainline NGINX 1.13 with the following features:
 * Brotli Compression using an [ngx\_brotli fork](https://github.com/felixbuenemann/ngx_brotli/tree/fix-static-brotli-build) with brotli 1.0
 * Geoip
 * Accept-Language support via [accept\_language\_module](https://github.com/giom/nginx_accept_language_module)
+
+Node.js v8 with NPM, Yarn and Full-ICU pre-installed.
 
 It also contains the following tools:
 
