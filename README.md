@@ -1,6 +1,6 @@
 This Docker image contains the following components:
 
-Stable NGINX 1.14 with the following features:
+Stable NGINX 1.16 with the following features:
 
 * HTTP/2
 * SSL with ALPN support (using OpenSSL)
